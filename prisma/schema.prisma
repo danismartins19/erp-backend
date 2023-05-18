@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Produto {
+  codigo     Int    @id @default(autoincrement())
+  nome       String
+  precoCusto Float? @default(0)
+  precoVenda Float
+  qtdEstoque Float? @default(0)
+}
+
+model Cliente {
+  codigo   Int     @id @default(autoincrement())
+  nome     String
+  endereco String
+  numero   String
+  cidade   String
+  UF       String
+  cep      String
+  CPF      String?
+}
